@@ -9,3 +9,4 @@ while (true)
     Console.WriteLine(str.isPalindrome());
 }
 
+
