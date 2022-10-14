@@ -10,23 +10,29 @@ if (count < 1 || count > 5)
 }
 for (int i = 0; i < count; i++)
 {
-    Console.Write("Enter Name: ");
-    string name = Console.ReadLine();
+ERROR2: Console.Write("Enter Name: ");
+    string? name = Console.ReadLine();
     Console.Write("Enter phone(8 digits): ");
-ERROR2: string phoneNumber = Console.ReadLine();
-    if (phoneNumber.Trim().Length != 8 || !(int.TryParse(phoneNumber, out _))) ;
+    string? phoneNumber = Console.ReadLine();
+    if (phoneNumber.Trim().Length == 8 || int.TryParse(phoneNumber, out _))
+    {
+        contacts.Add(new PhoneNumber(name, phoneNumber));
+
+    }
+    else
     {
         Console.WriteLine("Invalid number");
         goto ERROR2;
+
     }
-    contacts.Add(new PhoneNumber(name, phoneNumber));
+
 }
 
 
 string findContact = "";
 while (true)
 {
-    Console.Write("Enter name: ");
+    Console.Write("\nEnter name to find contact: ");
     findContact = Console.ReadLine();
     // var item=from x in contacts where x.Name == findContact select x;
     foreach (var item in contacts)
